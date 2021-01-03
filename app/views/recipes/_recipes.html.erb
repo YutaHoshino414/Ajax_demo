@@ -1,0 +1,21 @@
+<div class="row">
+  <% recipes.each do |recipe| %>
+  <div class="col-sm-4 mb-3">
+    <div class="card shadow h-100" id="<%= recipe.id %>">
+      <div class="card-body">
+        <p class="card-text"><%= recipe.title %></p>
+        <p class="card-text"><small><%= simple_format recipe.body %></small></p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small><span>　　</span>
+        <%= link_to edit_recipe_path(recipe.id), method: :get, data:{remote:true} do %>
+        <i class="fas fa-edit" style="color:orange" data-toggle="modal" data-target="#exampleModal02"></i><span>　</span>
+        <% end %>
+        <%= link_to recipe_path(recipe.id), method: :delete, data: { confirm:"削除しますか", remote:true} do %>
+        <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
